@@ -22,11 +22,11 @@ This script automates the process of archiving log files and setting up log rota
     ```bash
     ./backup-script.sh /path/to/your/logfile.log
     ```
-
 or
-    ```bash
-    ./backup-script.sh /path/to/your/logfiles
-    ```
+
+```bash
+./backup-script.sh /path/to/your/logfiles
+```
 
 3. Follow the On-Screen Prompts:
 
@@ -43,9 +43,10 @@ or
     ```
 
 or
-    ```bash
-    ./backup-script.sh /path/to/your/logfiles
-    ```
+
+```bash
+./backup-script.sh /path/to/your/logfiles
+```
 
 ## Example
 
