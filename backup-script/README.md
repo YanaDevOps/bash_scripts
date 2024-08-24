@@ -1,36 +1,59 @@
-# Backup Script
+# Backup and Log Rotation Script
 
-This Bash script automates the process of creating backups for a specified source directory and storing them in a specified destination directory. The script checks if the directories exist, creates a new directory if necessary, and generates a timestamped archive of the source directory.
+## Overview
+
+This script automates the process of archiving log files and setting up log rotation using `logrotate`. It provides a user-friendly interface for configuring log rotation, including options for compression, permissions, and user/group settings.
 
 ## Features
 
-- **Argument Handling:** Accepts source and destination directories as arguments.
-- **Directory Verification:** Checks if the source and destination directories exist. If the destination directory does not exist, the user is prompted to create it.
-- **Timestamped Backups:** Archives the source directory with a timestamp, ensuring unique filenames.
-- **Error Handling:** Provides meaningful error messages if arguments are missing or directories do not exist.
-
-## Requirements
-
-- Bash shell
+- **Log Archiving:** Compresses and archives log files into a `.tar.gz` file.
+- **Log Rotation Configuration:** Sets up log rotation with customizable parameters, such as rotation frequency, number of copies, compression, permissions, and user/group settings.
+- **Automatic Permissions Fix:** Detects and fixes insecure permissions on the parent directory of the log file if necessary.
+- **Flexible User and Group Settings:** Allows configuration of the user and group for both the log file and the logrotate process.
 
 ## Usage
 
-```bash
-./backup_script.sh <source_directory> <destination_directory>
-```
+1. **Clone the Repository:**
+    ```bash
+    git clone <repository-url>
+    cd backup-script
+    ```
+2. Run the Script:
+    ```bash
+    ./backup-script.sh /path/to/your/logfile.log
+    ```
+or
+    ```bash
+    ./backup-script.sh /path/to/your/logfiles
+    ```
+
+3. Follow the On-Screen Prompts:
+
+* Choose whether to set up log rotation.
+* Select the frequency of log rotation (daily, weekly, monthly, etc.).
+* Define the number of copies to keep.
+* Decide whether to compress rotated logs.
+* Specify file permissions, user, and group for the log file.
+* Choose the user and group for the log rotation actions.
+
+4. Archive Logs Without Rotation: If you choose not to set up log rotation, the script will still archive your logs:
+    ```bash
+    ./backup-script.sh /path/to/your/logfile.log
+    ```
+or
+    ```bash
+    ./backup-script.sh /path/to/your/logfiles
+    ```
 
 ## Example
+
 ```bash
-./backup_script.sh /var/log/apache2 /root/backups
+./backup-script.sh /var/log/my_services.log
 ```
 
-### This command will:
+This will guide you through the setup process, including options for log rotation and archiving.
 
-1. Verify the existence of /root/scripts as the source directory.
-2. Check if the destination directory /root/backups exists. If it does not exist, the script will prompt the user to create it.
-3. Create a compressed archive of the /root/scripts directory in /root/backups, with a filename that includes the current date and time.
+## Troubleshooting
 
-### Important Notes
-* The script automatically converts relative paths to absolute paths using realpath.
-* The archive is created using the tar command with gzip compression (.tar.gz).
-* The script includes basic error handling to guide the user through common issues like missing directories or arguments.
+* Log Rotation Does Not Occur: Ensure that the log file is not empty. If notifempty is set in the configuration, logrotate will skip empty log files.
+* Permissions Issues: The script will prompt to fix any insecure permissions on the log file's parent directory.
