@@ -22,6 +22,7 @@ This script automates the process of archiving log files and setting up log rota
     ```bash
     ./backup-script.sh /path/to/your/logfile.log
     ```
+
 or
     ```bash
     ./backup-script.sh /path/to/your/logfiles
@@ -40,6 +41,7 @@ or
     ```bash
     ./backup-script.sh /path/to/your/logfile.log
     ```
+
 or
     ```bash
     ./backup-script.sh /path/to/your/logfiles
