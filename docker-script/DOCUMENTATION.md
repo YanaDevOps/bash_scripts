@@ -20,7 +20,6 @@ The Docker Management Script provides a comprehensive interface for managing Doc
    - [docker_compose_logs](#docker_compose_logs)
 4. [Error Handling](#error-handling)
 5. [Advanced Usage](#advanced-usage)
-6. [License](#license)
 
 ## Installation
 
